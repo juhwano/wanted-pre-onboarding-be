@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     let datas = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i <= 10; i++) {
       let obj = {
         name: "test" + i,
         country: "testCountry" + i,

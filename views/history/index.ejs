@@ -8,15 +8,18 @@
   </head>
   <body>
     <h1>지원 내역</h1>
+    <button type="button"><a href="/application">뒤로가기</a></button>
     <table>
       <tr>
-        <td>회사 번호(id)</td>
+        <td>채용공고 번호(id)</td>
         <td>사용자 번호(id)</td>
       </tr>
+      <% for(let history of histories) { %>
       <tr>
-        <td>1</td>
-        <td>2</td>
+        <td><%= history.application_id %></td>
+        <td><%= history.user_id %></td>
       </tr>
+      <% } %>
     </table>
   </body>
 </html>
