@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>채용공고 메인</title>
+  </head>
+  <body>
+    <h1>채용공고 등록</h1>
+    <form action="/application" method="post">
+      <table>
+        <tr>
+          <td>
+            <input
+              type="text"
+              name="company_id"
+              placeholder="회사 id 입력(숫자)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" name="position" placeholder="채용 포지션 입력" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" name="reward" placeholder="채용 보상금 입력" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <textarea name="content">채용 내용 입력</textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" name="skill" placeholder="사용 기술 입력" />
+          </td>
+        </tr>
+      </table>
+      <button type="submit">등록하기</button>
+    </form>
+    <hr />
+    <h1>채용공고 목록</h1>
+    <table>
+      <tr>
+        <td>채용공고 번호</td>
+        <td>회사 번호</td>
+        <td>회사 이름</td>
+        <td>국가</td>
+        <td>지역</td>
+        <td>채용포지션</td>
+        <td>채용보상금</td>
+        <td>사용기술</td>
+      </tr>
+      <% for(let app of applications) { %>
+      <tr>
+        <td><%= app.id %></td>
+        <td><%= app.company_id %></td>
+        <td><%= app.company.dataValues.name %></td>
+        <td><%= app.company.dataValues.country %></td>
+        <td><%= app.company.dataValues.region %></td>
+        <td><%= app.position %></td>
+        <td><%= app.reward %></td>
+        <td><%= app.skill %></td>
+        <td>
+          <button>
+            <a href="/application/<%= app.id %>">상세 페이지 보기</a>
+          </button>
+        </td>
+        <td>
+          <form
+            action="/application/<%= app.id %>?_method=DELETE"
+            method="post"
+          >
+            <button type="submit">삭제하기</button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+    <hr />
+    <h1>채용공고 지원하기(사용자)</h1>
+    <form action="/history" method="post">
+      <table>
+        <tr>
+          <td>
+            <input
+              type="text"
+              name="company_id"
+              placeholder="지원할 회사 id 입력(숫자)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="text"
+              name="user_id"
+              placeholder="사용자 id 입력(숫자)"
+            />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

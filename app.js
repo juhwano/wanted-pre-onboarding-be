@@ -4,9 +4,9 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const { sequelize } = require("./models");
+const methodOverride = require("method-override");
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
 
 const app = express();
 
@@ -23,6 +23,8 @@ sequelize
     console.log("Sync failed");
     console.error(err);
   });
+// using metohd-override
+app.use(methodOverride("_method"));
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -31,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

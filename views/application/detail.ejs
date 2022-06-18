@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>채용공고 상세페이지</title>
+  </head>
+  <body>
+    <h1>채용공고 상세페이지</h1>
+    <form action="/application/<%= application.id %>?_method=PUT" method="post">
+      <table>
+        <tr>
+          <td>
+            <label for="application.id">채용공고 번호 : </label
+            ><input
+              type="text"
+              id="application.id"
+              value="<%= application.id%>"
+              readonly
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="company_id">회사명 : </label
+            ><input
+              type="text"
+              id="company_id"
+              value="<%= application.company.dataValues.name%>"
+              readonly
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="country">국가 : </label
+            ><input
+              type="text"
+              id="country"
+              value="<%= application.company.dataValues.country%>"
+              readonly
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="region">지역 : </label
+            ><input
+              type="text"
+              id="region"
+              value="<%= application.company.dataValues.region%>"
+              readonly
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="position">채용포지션 : </label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              value="<%= application.position %>"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="reward">채용보상금 : </label>
+            <input
+              type="text"
+              id="reward"
+              name="reward"
+              value="<%= application.reward %>"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="skill">사용기술 : </label>
+            <input
+              type="text"
+              id="skill"
+              name="skill"
+              value="<%= application.skill %>"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="content">채용 내용 : </label>
+            <textarea id="content" name="content">
+<%= application.content %></textarea
+            >
+          </td>
+        </tr>
+      </table>
+      <button type="submit">수정하기</button>
+      <button type="button"><a href="/application">뒤로가기</a></button>
+    </form>
+  </body>
+</html>
