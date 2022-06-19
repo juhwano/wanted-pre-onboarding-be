@@ -1,5 +1,4 @@
 const models = require("../../models");
-const sequelize = require("sequelize");
 
 const applicationController = {
   getAllApplication: async (req, res) => {
@@ -13,7 +12,6 @@ const applicationController = {
           },
         ],
       });
-
       res.render("application/index", { applications: result });
     } catch (err) {
       console.error(err);
@@ -29,7 +27,7 @@ const applicationController = {
         .create({
           company_id,
           position,
-          reward: parseInt(reward),
+          reward,
           content,
           skill,
         })

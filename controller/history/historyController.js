@@ -8,7 +8,6 @@ const historyController = {
       let result = await models.history.findAll({
         order: [["createdAt", "DESC"]],
       });
-
       res.render("history/index", { histories: result });
     } catch (err) {
       console.error(err);
