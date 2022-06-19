@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       reward: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(45),
         allowNull: false,
       },
       content: {

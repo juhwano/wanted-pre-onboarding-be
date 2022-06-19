@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const applicationRouter = require("./application/index");
 const historyRouter = require("./history/index");
+const searchRouter = require("./search/index");
 
 /* GET home page. */
 router.get("/", (req, res) => {
@@ -10,5 +11,6 @@ router.get("/", (req, res) => {
 
 router.use("/application", applicationRouter);
 router.use("/history", historyRouter);
+router.use("/search", searchRouter);
 
 module.exports = router;

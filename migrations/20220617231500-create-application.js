@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       reward: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(45),
         allowNull: false,
       },
       content: {
